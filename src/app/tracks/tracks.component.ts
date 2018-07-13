@@ -4,6 +4,7 @@ import {Album} from '../album.model';
 import {Artist} from '../artist.model';
 import {TracksService} from '../tracks.service';
 import {Response} from '@angular/http';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-tracks',
@@ -12,6 +13,7 @@ import {Response} from '@angular/http';
   providers: [TracksService]
 })
 export class TracksComponent implements OnInit {
+  searchString = '';
   tracks: Track[] = [];
 
   constructor(private tracksService: TracksService) { }
@@ -23,5 +25,4 @@ export class TracksComponent implements OnInit {
       (error) => console.log(error)
     );
   }
-
 }

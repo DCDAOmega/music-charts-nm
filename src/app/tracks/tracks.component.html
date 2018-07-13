@@ -1,10 +1,17 @@
 <div class="row">
-  <div class="col-xs-12">
-    <h3>Top Tracks</h3>
-  </div>
+    <div class="col-xs-3">
+      <h3 style="margin:0px;">Top Tracks</h3>
+    </div>
+    <div class="col-xs-9">
+      <input class="form-control"
+             [(ngModel)]="searchString"
+             placeholder="Enter title or artist here">
+    </div>
 </div>
-<div clas="row">
-  <div clas="col-xs-12">
-    <app-track-item *ngFor="let track of tracks" [trackItem]="track"></app-track-item>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <app-track-item *ngFor="let track of (tracks | searchPipe : searchString)"
+                    [trackItem]="track"></app-track-item>
   </div>
 </div>

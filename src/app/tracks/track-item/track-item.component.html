@@ -3,18 +3,22 @@
   href="#"
   class="list-group-item clearfix"
 >
-  <span class="pull-left col-xs-2 col-lg-3">
+  <span class="pull-left col-lg-2 col-xs-3 ">
         <img
           [src]="trackItem.album.cover"
           alt="{{ trackItem.artist.name }}"
           class="img-responsive"
           style="max-height: 100px;">
   </span>
-  <div class="pull-left ">
-    <h3 class="list-group-item-heading">{{ trackItem.title }} - <small>{{ trackItem.artist.name}}</small></h3>
-    <div class="hidden">
+  <div class="pull-left col-xs-9">
+    <h3 class="list-group-item-heading" >
+      {{ trackItem.title }}<small> {{ trackItem.artist.name}}</small>
+    </h3>
+    <div class="">
       <hr>
-      <p class="list-group-item-text"></p>
+      <p class="list-group-item-text">
+        <a href="{{trackItem.link}}" target="_blank">More about this track</a>
+      </p>
     </div>
   </div>
 

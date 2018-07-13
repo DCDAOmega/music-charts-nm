@@ -15,12 +15,12 @@ export class TracksService {
 
   getTracks() {
     // const headers = new HttpHeaders({'Access-Control-Allow-Origin' : 'http://localhost:4200'});
-    return this.httpService.get( 'http://api.deezer.com/chart')
+    return this.httpService.get( 'https://api.deezer.com/chart')
       .map(
         (response: Response) => {
           const data = response.json();
-          console.log(data.tracks);
-          return data.tracks;
+          console.log(data['tracks'].data);
+          return data['tracks'].data;
         }
       );
   }
