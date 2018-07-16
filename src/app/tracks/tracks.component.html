@@ -2,16 +2,27 @@
     <div class="col-xs-3">
       <h3 style="margin:0px;">Top Tracks</h3>
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-7">
       <input class="form-control"
              [(ngModel)]="searchString"
              placeholder="Enter title or artist here">
+    </div>
+    <div class="col-xs-2">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value=""
+               [disabled]="filterIsDisabled"
+               (click)="sortTracks()"
+               (change)="[sortAlpha = !sortAlpha]" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Sort title alphabetically
+        </label>
+      </div>
     </div>
 </div>
 <br>
 <div class="row">
   <div class="col-xs-12">
-    <app-track-item *ngFor="let track of (tracks | searchPipe : searchString)"
+    <app-track-item *ngFor="let track of (tracks | searchPipe : searchString : sortAlpha )"
                     [trackItem]="track"></app-track-item>
   </div>
 </div>

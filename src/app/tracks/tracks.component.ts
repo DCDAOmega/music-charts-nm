@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Track} from '../track.model';
-import {Album} from '../album.model';
-import {Artist} from '../artist.model';
 import {TracksService} from '../tracks.service';
-import {Response} from '@angular/http';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-tracks',
@@ -14,15 +10,32 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class TracksComponent implements OnInit {
   searchString = '';
+  sortAlpha = false;
+  filterIsDisabled = false;
   tracks: Track[] = [];
 
   constructor(private tracksService: TracksService) { }
 
   ngOnInit() {
+    this.onGetTracks();
+  }
+
+  sortTracks() {
+    if(this.sortAlpha){
+      this.onGetTracks();
+    }
+  }
+
+  onGetTracks(){
+    this.filterIsDisabled = true;
     this.tracksService.getTracks()
       .subscribe(
-      (tracks: any[]) => this.tracks = tracks,
-      (error) => console.log(error)
-    );
+
+        (tracks: any[]) => {
+          this.tracks = tracks;
+          this.filterIsDisabled = false;
+        },
+        (error) => console.log(error)
+      );
   }
 }
