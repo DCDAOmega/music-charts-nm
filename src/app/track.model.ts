@@ -1,4 +1,3 @@
-import {ɵ_sanitizeUrl} from '@angular/core';
 import {Artist} from './artist.model';
 import {Album} from './album.model';
 
