@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Track} from '../track.model';
 import {TracksService} from '../tracks.service';
 
